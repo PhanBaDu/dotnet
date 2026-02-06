@@ -2,100 +2,85 @@
     ViewData["Title"] = "Quản lý đơn hàng";
 }
 
-<div class="card card-primary card-outline mb-4">
-    <div class="card-header">
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
         <h3 class="card-title">Danh sách đơn hàng</h3>
+        <a href="~/Order/Create" class="btn btn-primary btn-sm">
+            <i class="bi bi-cart-plus me-1"></i> Lập đơn hàng mới
+        </a>
     </div>
     <div class="card-body">
-        <!-- Search Form -->
-        <form action="" method="get">
-            <div class="row">
-                <div class="col-sm-10">
+        <!-- Filter Form -->
+        <form action="" method="get" class="mb-4">
+            <div class="row g-3">
+                <div class="col-md-5">
+                    <label class="form-label text-muted small fw-bold text-uppercase">Tìm kiếm</label>
                     <div class="input-group">
-                        <input type="text" name="searchValue" class="form-control" placeholder="Nhập mã đơn hàng hoặc tên khách hàng...">
-                        <select class="form-select" name="status" style="max-width: 200px;">
-                            <option value="">-- Tất cả trạng thái --</option>
-                            <option value="pending">Chờ xử lý</option>
-                            <option value="processing">Đang xử lý</option>
-                            <option value="shipping">Đang giao</option>
-                            <option value="completed">Hoàn thành</option>
-                            <option value="cancelled">Đã hủy</option>
-                        </select>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="bi bi-search"></i> Tìm kiếm
-                        </button>
+                        <span class="input-group-text bg-white border-end-0 text-muted"><i class="bi bi-search"></i></span>
+                        <input type="text" name="searchValue" class="form-control border-start-0" placeholder="Mã đơn hàng, tên khách hàng...">
                     </div>
                 </div>
-                <div class="col-sm-2 text-end">
-                    <a href="~/Order/Create" class="btn btn-primary">
-                        <i class="bi bi-plus-circle-fill"></i> Lập đơn hàng
-                    </a>
+                <div class="col-md-4">
+                    <label class="form-label text-muted small fw-bold text-uppercase">Trạng thái</label>
+                    <select class="form-select" name="status">
+                        <option value="">-- Tất cả trạng thái --</option>
+                        <option value="1">Vừa đặt (Chờ duyệt)</option>
+                        <option value="2">Đã duyệt (Chờ giao hàng)</option>
+                        <option value="3">Đang giao hàng</option>
+                        <option value="4">Thành công (Đã kết thúc)</option>
+                        <option value="5">Đã hủy</option>
+                        <option value="6">Bị từ chối</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label text-muted small fw-bold text-uppercase">&nbsp;</label>
+                    <button type="submit" class="btn btn-primary w-100">Lọc kết quả</button>
                 </div>
             </div>
         </form>
 
-        <br />
-
         <!-- Order Table -->
         <div class="table-responsive">
-            <table class="table table-bordered table-hover table-striped">
+            <table class="table table-hover align-middle">
                 <thead>
-                    <tr class="table-primary">
-                        <th style="width: 100px;">Mã đơn</th>
+                    <tr>
+                        <th style="width: 120px;">Mã đơn</th>
                         <th>Khách hàng</th>
                         <th>Ngày đặt</th>
-                        <th>Tổng tiền</th>
-                        <th>Trạng thái</th>
-                        <th style="width: 120px;">Chức năng</th>
+                        <th class="text-end">Tổng tiền</th>
+                        <th class="text-center">Trạng thái</th>
+                        <th class="text-end">Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @for (int i = 1; i <= 10; i++)
+                    @for (int i = 1; i <= 8; i++)
                     {
-                        var statusClass = "";
-                        var statusText = "";
-                        
-                        switch(i % 5) {
-                            case 0:
-                                statusClass = "bg-secondary";
-                                statusText = "Chờ xử lý";
-                                break;
-                            case 1:
-                                statusClass = "bg-info";
-                                statusText = "Đang xử lý";
-                                break;
-                            case 2:
-                                statusClass = "bg-warning";
-                                statusText = "Đang giao";
-                                break;
-                            case 3:
-                                statusClass = "bg-success";
-                                statusText = "Hoàn thành";
-                                break;
-                            case 4:
-                                statusClass = "bg-danger";
-                                statusText = "Đã hủy";
-                                break;
-                        }
-                        
+                        var status = i % 5;
                         <tr>
-                            <td>ORD00@i</td>
-                            <td>Khách hàng @i</td>
-                            <td>@DateTime.Now.AddDays(-i).ToString("dd/MM/yyyy")</td>
-                            <td class="text-end">@((i * 500000).ToString("N0")) VNĐ</td>
-                            <td><span class="badge @statusClass">@statusText</span></td>
+                            <td class="fw-bold text-dark">#ORD-@(1000 + i)</td>
+                            <td>
+                                <div class="fw-medium">Nguyễn Văn Khách @i</div>
+                                <div class="text-muted small">090 888 77@(i)</div>
+                            </td>
+                            <td class="small text-muted">
+                                @DateTime.Now.AddDays(-i).ToString("HH:mm dd/MM/yyyy")
+                            </td>
+                            <td class="text-end fw-bold text-dark">
+                                @((i * 450000).ToString("N0"))₫
+                            </td>
                             <td class="text-center">
-                                <div class="btn-group">
-                                    <a href="~/Order/Detail/@i" class="btn btn-sm btn-info" title="Chi tiết">
-                                        <i class="bi bi-eye"></i>
-                                    </a>
-                                    <a href="~/Order/Edit/@i" class="btn btn-sm btn-warning" title="Sửa">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </a>
-                                    <a href="~/Order/Delete/@i" class="btn btn-sm btn-danger" title="Xóa">
-                                        <i class="bi bi-trash"></i>
-                                    </a>
-                                </div>
+                                @switch(status) {
+                                    case 1: <span class="badge text-bg-warning-subtle text-warning border border-warning-subtle">Chờ duyệt</span> break;
+                                    case 2: <span class="badge text-bg-info-subtle text-info border border-info-subtle">Chờ giao</span> break;
+                                    case 3: <span class="badge text-bg-primary-subtle text-primary border border-primary-subtle">Đang giao</span> break;
+                                    case 4: <span class="badge text-bg-success-subtle text-success border border-success-subtle">Thành công</span> break;
+                                    default: <span class="badge text-bg-danger-subtle text-danger border border-danger-subtle">Đã hủy</span> break;
+                                }
+                            </td>
+                            <td class="text-end">
+                                <a href="~/Order/Detail/@i" class="btn btn-sm btn-light border" title="Xem chi tiết">
+                                    <i class="bi bi-box-arrow-up-right me-1"></i> Chi tiết
+                                </a>
                             </td>
                         </tr>
                     }
@@ -103,26 +88,17 @@
             </table>
         </div>
 
-        <br />
-
         <!-- Pagination -->
-        <div class="text-center">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Trước</a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <span class="page-link">...</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">10</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Sau</a>
-                </li>
-            </ul>
+        <div class="d-flex align-items-center justify-content-between mt-4">
+            <div class="text-muted small">Hiển thị dữ liệu tĩnh mẫu cho đơn hàng</div>
+            <nav>
+                <ul class="pagination pagination-sm mb-0">
+                    <li class="page-item disabled"><a class="page-link" href="#"><i class="bi bi-chevron-left"></i></a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#"><i class="bi bi-chevron-right"></i></a></li>
+                </ul>
+            </nav>
         </div>
-
     </div>
 </div>

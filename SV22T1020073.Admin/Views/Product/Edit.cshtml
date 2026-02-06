@@ -1,84 +1,141 @@
 @{
-    ViewData["Title"] = "Sửa sản phẩm";
+    ViewData["Title"] = "Cập nhật sản phẩm";
 }
 
-<div class="card card-warning card-outline mb-4">
-    <div class="card-header">
-        <h3 class="card-title">Sửa thông tin sản phẩm</h3>
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="card-title">Thông tin cơ bản</h3>
+            </div>
+            <div class="card-body">
+                <form onsubmit="event.preventDefault()">
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Tên sản phẩm <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control form-control-lg" placeholder="Ví dụ: iPhone 15 Pro Max" value="iPhone 15 Pro Max">
+                        <div class="form-text text-muted">Tên hiển thị trên cửa hàng và kết quả tìm kiếm.</div>
+                    </div>
+
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Loại hàng <span class="text-danger">*</span></label>
+                            <select class="form-select">
+                                <option value="1" selected>Điện thoại & Tablet</option>
+                                <option value="2">Máy tính & Laptop</option>
+                                <option value="3">Phụ kiện & Âm thanh</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Nhà cung cấp <span class="text-danger">*</span></label>
+                            <select class="form-select">
+                                <option value="1" selected>Apple Global</option>
+                                <option value="2">Samsung Store</option>
+                                <option value="3">Xiaomi Official</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Đơn vị tính <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" placeholder="Cái, Chiếc, Bộ..." value="Chiếc">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Giá niêm yết (VNĐ) <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light">₫</span>
+                                <input type="text" class="form-control fw-bold text-dark" value="32,990,000">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-0">
+                        <label class="form-label fw-semibold">Mô tả sản phẩm</label>
+                        <textarea class="form-control" rows="6" placeholder="Nhập đặc điểm nổi bật, thông số kỹ thuật...">Sản phẩm chính hãng Apple Việt Nam (VN/A). Bảo hành 12 tháng tại các trung tâm bảo hành ủy quyền.</textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Hình ảnh sản phẩm</h3>
+            </div>
+            <div class="card-body">
+                <div class="row g-2">
+                    <div class="col-md-3">
+                        <div class="border rounded p-1 position-relative">
+                            <img src="https://picsum.photos/200/200?random=1" class="img-fluid rounded" alt="">
+                            <button class="btn btn-sm btn-danger position-absolute top-0 end-0 m-1 rounded-circle p-1" style="width: 24px; height: 24px;"><i class="bi bi-x small"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="border rounded p-1 position-relative">
+                            <img src="https://picsum.photos/200/200?random=2" class="img-fluid rounded" alt="">
+                            <button class="btn btn-sm btn-danger position-absolute top-0 end-0 m-1 rounded-circle p-1" style="width: 24px; height: 24px;"><i class="bi bi-x small"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="border dashed rounded d-flex align-items-center justify-content-center bg-light cursor-pointer" style="height: 100%; min-height: 100px;">
+                            <div class="text-center">
+                                <i class="bi bi-upload text-muted h4 mb-0"></i>
+                                <div class="text-muted small">Tải ảnh lên</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <form onsubmit="event.preventDefault()">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="productName" class="form-label">Tên sản phẩm: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="productName" name="productName" value="Sản phẩm 1" required>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="categoryId" class="form-label">Loại hàng: <span class="text-danger">*</span></label>
-                        <select class="form-select" id="categoryId" name="categoryId" required>
-                            <option value="">-- Chọn loại hàng --</option>
-                            <option value="1" selected>Loại hàng 1</option>
-                            <option value="2">Loại hàng 2</option>
-                            <option value="3">Loại hàng 3</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="supplierId" class="form-label">Nhà cung cấp: <span class="text-danger">*</span></label>
-                        <select class="form-select" id="supplierId" name="supplierId" required>
-                            <option value="">-- Chọn nhà cung cấp --</option>
-                            <option value="1" selected>Nhà cung cấp 1</option>
-                            <option value="2">Nhà cung cấp 2</option>
-                            <option value="3">Nhà cung cấp 3</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="unit" class="form-label">Đơn vị: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="unit" name="unit" value="Cái" required>
-                    </div>
-                </div>
+    <div class="col-lg-4">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="card-title">Trạng thái & Hiển thị</h3>
             </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="price" class="form-label">Giá: <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" id="price" name="price" value="100000" min="0" step="1000" required>
-                    </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Trạng thái bán hàng</label>
+                    <select class="form-select border border-success-subtle text-success fw-semibold">
+                        <option value="1">Sẵn hàng - Đang hiển thị</option>
+                        <option value="2">Ngừng kinh doanh</option>
+                        <option value="3">Ẩn khỏi cửa hàng</option>
+                    </select>
                 </div>
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="status" class="form-label">Trạng thái: <span class="text-danger">*</span></label>
-                        <select class="form-select" id="status" name="status" required>
-                            <option value="available" selected>Còn hàng</option>
-                            <option value="out-of-stock">Hết hàng</option>
-                            <option value="discontinued">Ngừng kinh doanh</option>
-                        </select>
-                    </div>
+                <div class="form-check form-switch mb-3">
+                    <input class="form-check-input" type="checkbox" id="isFeatured" checked>
+                    <label class="form-check-label fw-medium" for="isFeatured">Sản phẩm nổi bật (Trang chủ)</label>
                 </div>
-            </div>
-
-            <div class="mb-3">
-                <label for="description" class="form-label">Mô tả:</label>
-                <textarea class="form-control" id="description" name="description" rows="4">Đây là mô tả chi tiết cho sản phẩm 1. Sản phẩm có chất lượng cao, được nhập khẩu từ các nhà cung cấp uy tín.</textarea>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="allowDiscount">
+                    <label class="form-check-label fw-medium" for="allowDiscount">Cho phép áp dụng mã giảm giá</label>
+                </div>
             </div>
         </div>
-        <div class="card-footer">
-            <button type="submit" class="btn btn-warning">
-                <i class="bi bi-save"></i> Cập nhật
-            </button>
-            <a href="~/Product" class="btn btn-secondary">
-                <i class="bi bi-x-circle"></i> Hủy bỏ
-            </a>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Hành động</h3>
+            </div>
+            <div class="card-body">
+                <button type="submit" class="btn btn-primary w-100 mb-2">
+                    <i class="bi bi-save me-2"></i> Lưu thay đổi
+                </button>
+                <a href="~/Product" class="btn btn-light border w-100">
+                    Hủy bỏ
+                </a>
+                <hr>
+                <button class="btn btn-outline-danger w-100 btn-sm">
+                    <i class="bi bi-trash me-2"></i> Xóa vĩnh viễn
+                </button>
+            </div>
         </div>
-    </form>
+    </div>
 </div>
+
+@section Styles {
+    <style>
+        .dashed { border-style: dashed !important; border-width: 2px !important; }
+        .cursor-pointer { cursor: pointer; }
+    </style>
+}

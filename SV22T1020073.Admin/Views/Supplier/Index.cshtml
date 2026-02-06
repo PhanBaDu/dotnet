@@ -2,68 +2,60 @@
     ViewData["Title"] = "Quản lý nhà cung cấp";
 }
 
-<div class="card card-primary card-outline mb-4">
-    <div class="card-header">
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
         <h3 class="card-title">Danh sách nhà cung cấp</h3>
+        <a href="~/Supplier/Create" class="btn btn-primary btn-sm">
+            <i class="bi bi-building-plus me-1"></i> Bổ sung
+        </a>
     </div>
     <div class="card-body">
         <!-- Search Form -->
-        <form action="" method="get">
-            <div class="row">
-                <div class="col-sm-10">
-                    <div class="input-group">
-                        <input type="text" name="searchValue" class="form-control" placeholder="Nhập tên nhà cung cấp cần tìm...">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="bi bi-search"></i> Tìm kiếm
-                        </button>
-                    </div>
-                </div>
-                <div class="col-sm-2 text-end">
-                    <a href="~/Supplier/Create" class="btn btn-primary">
-                        <i class="bi bi-plus-circle-fill"></i> Bổ sung
-                    </a>
-                </div>
+        <form action="" method="get" class="mb-4">
+            <div class="input-group">
+                <input type="text" name="searchValue" class="form-control h-auto py-2" placeholder="Tìm theo tên nhà cung cấp, tên giao dịch, địa chỉ...">
+                <button type="submit" class="btn btn-primary px-4">
+                    <i class="bi bi-search me-1"></i> Tìm kiếm
+                </button>
             </div>
         </form>
 
-        <br />
-
         <!-- Supplier Table -->
         <div class="table-responsive">
-            <table class="table table-bordered table-hover table-striped">
+            <table class="table table-hover align-middle">
                 <thead>
-                    <tr class="table-primary">
-                        <th>Tên nhà cung cấp</th>
-                        <th>Tên giao dịch</th>
-                        <th>Điện thoại</th>
-                        <th>Email</th>
+                    <tr>
+                        <th>Nhà cung cấp / Đối tác</th>
+                        <th>Thông tin liên hệ</th>
                         <th>Địa chỉ</th>
-                        <th>Trạng thái</th>
-                        <th style="width: 100px;">Chức năng</th>
+                        <th class="text-center">Quốc gia</th>
+                        <th class="text-end">Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @for (int i = 1; i <= 10; i++)
+                    @for (int i = 1; i <= 6; i++)
                     {
                         <tr>
-                            <td>Công ty Nhà cung cấp @i</td>
-                            <td>Nguyễn Văn A @i</td>
-                            <td>098765432@i</td>
-                            <td>supplier@i@@company.com</td>
-                            <td>Số @i, Đường XYZ, Hà Nội</td>
                             <td>
-                                @if(i % 2 == 0) {
-                                    <span class="badge bg-success">Đang hoạt động</span>
-                                } else {
-                                     <span class="badge bg-danger">Bị khóa</span>
-                                }
+                                <div class="fw-bold text-dark text-truncate" style="max-width: 250px;">Công ty Cổ phần Thương mại @(i + 10)</div>
+                                <div class="text-muted small">Người đại diện: Nguyễn Văn @(i)</div>
+                            </td>
+                            <td>
+                                <div class="small fw-medium"><i class="bi bi-envelope-at me-2 text-muted"></i>contact@(i)@@partner.vn</div>
+                                <div class="small fw-medium"><i class="bi bi-phone me-2 text-muted"></i>(+84) 912 345 6x@(i)</div>
+                            </td>
+                            <td class="small text-muted">
+                                Khu công nghệ cao, Quận @i, TP. Hồ Chí Minh
                             </td>
                             <td class="text-center">
+                                <span class="badge text-bg-secondary-subtle text-secondary border border-secondary-subtle">Việt Nam</span>
+                            </td>
+                            <td class="text-end">
                                 <div class="btn-group">
-                                    <a href="~/Supplier/Edit/@i" class="btn btn-sm btn-warning" title="Sửa">
+                                    <a href="~/Supplier/Edit/@i" class="btn btn-sm btn-light border" title="Sửa">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <a href="~/Supplier/Delete/@i" class="btn btn-sm btn-danger" title="Xóa">
+                                    <a href="~/Supplier/Delete/@i" class="btn btn-sm btn-light border text-danger" title="Xóa">
                                         <i class="bi bi-trash"></i>
                                     </a>
                                 </div>
@@ -74,28 +66,17 @@
             </table>
         </div>
 
-        <br />
-
         <!-- Pagination -->
-        <div class="text-center">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Trước</a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <span class="page-link">...</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">10</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Sau</a>
-                </li>
-            </ul>
+        <div class="d-flex align-items-center justify-content-between mt-4">
+            <div class="text-muted small">Hiển thị 6 nhà cung cấp mỗi trang</div>
+            <nav>
+                <ul class="pagination pagination-sm mb-0">
+                    <li class="page-item disabled"><a class="page-link" href="#"><i class="bi bi-chevron-left"></i></a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#"><i class="bi bi-chevron-right"></i></a></li>
+                </ul>
+            </nav>
         </div>
-
     </div>
 </div>
-
-

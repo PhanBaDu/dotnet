@@ -2,89 +2,93 @@
     ViewData["Title"] = "Quản lý mặt hàng";
 }
 
-<div class="card card-primary card-outline mb-4">
-    <div class="card-header">
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
         <h3 class="card-title">Danh sách mặt hàng</h3>
+        <a href="~/Product/Create" class="btn btn-primary btn-sm">
+            <i class="bi bi-plus-lg me-1"></i> Bổ sung
+        </a>
     </div>
     <div class="card-body">
         <!-- Search Form -->
-        <form action="" method="get">
-            <div class="row">
-                <div class="col-sm-10">
+        <form action="" method="get" class="mb-4">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label class="form-label text-muted small fw-bold text-uppercase">Loại hàng</label>
+                    <select class="form-select" name="categoryId">
+                        <option value="">Tất cả loại hàng</option>
+                        <option value="1">Điện thoại</option>
+                        <option value="2">Máy tính</option>
+                        <option value="3">Phụ kiện</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label text-muted small fw-bold text-uppercase">Nhà cung cấp</label>
+                    <select class="form-select" name="supplierId">
+                        <option value="">Tất cả nhà cung cấp</option>
+                        <option value="1">Apple Store</option>
+                        <option value="2">Samsung Global</option>
+                        <option value="3">Sony VN</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label text-muted small fw-bold text-uppercase">Tìm kiếm</label>
                     <div class="input-group">
                         <input type="text" name="searchValue" class="form-control" placeholder="Nhập tên mặt hàng cần tìm...">
-                        <select class="form-select" name="categoryId" style="max-width: 200px;">
-                            <option value="">-- Tất cả loại hàng --</option>
-                            <option value="1">Loại hàng 1</option>
-                            <option value="2">Loại hàng 2</option>
-                            <option value="3">Loại hàng 3</option>
-                        </select>
                         <button type="submit" class="btn btn-primary">
-                            <i class="bi bi-search"></i> Tìm kiếm
+                            <i class="bi bi-search me-1"></i> Tìm kiếm
                         </button>
                     </div>
-                </div>
-                <div class="col-sm-2 text-end">
-                    <a href="~/Product/Create" class="btn btn-primary">
-                        <i class="bi bi-plus-circle-fill"></i> Bổ sung
-                    </a>
                 </div>
             </div>
         </form>
 
-        <br />
-
         <!-- Product Table -->
         <div class="table-responsive">
-            <table class="table table-bordered table-hover table-striped">
+            <table class="table table-hover">
                 <thead>
-                    <tr class="table-primary">
-                        <th style="width: 80px;">Mã SP</th>
+                    <tr>
+                        <th style="width: 100px;">Hình ảnh</th>
                         <th>Tên sản phẩm</th>
                         <th>Loại hàng</th>
                         <th>Nhà cung cấp</th>
-                        <th>Giá</th>
-                        <th>Trạng thái</th>
-                        <th style="width: 200px;">Chức năng</th>
+                        <th class="text-end">Giá</th>
+                        <th class="text-center">Trạng thái</th>
+                        <th class="text-end">Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @for (int i = 1; i <= 10; i++)
+                    @for (int i = 1; i <= 8; i++)
                     {
                         <tr>
-                            <td>PRD00@i</td>
                             <td>
-                                <a href="~/Product/Detail/@i" class="text-decoration-none">
-                                    Sản phẩm @i
-                                </a>
+                                <img src="https://picsum.photos/id/@(i + 10)/100/100" class="rounded border" style="width: 48px; height: 48px; object-fit: cover;" alt="">
                             </td>
-                            <td>Loại hàng @((i % 3) + 1)</td>
-                            <td>Nhà cung cấp @((i % 5) + 1)</td>
-                            <td>@((i * 100000).ToString("N0")) VNĐ</td>
                             <td>
-                                @if(i % 2 == 0) {
-                                    <span class="badge bg-success">Còn hàng</span>
+                                <div class="fw-bold text-dark">Sản phẩm #@(1000 + i)</div>
+                                <div class="text-muted small">Apple Engine Pro</div>
+                            </td>
+                            <td>Thiết bị điện tử</td>
+                            <td>Apple Inc.</td>
+                            <td class="text-end fw-semibold text-dark">@((i * 1250000).ToString("N0"))₫</td>
+                            <td class="text-center">
+                                @if(i % 3 != 0) {
+                                    <span class="badge text-bg-success-subtle text-success border border-success-subtle">Sẵn hàng</span>
                                 } else {
-                                     <span class="badge bg-danger">Hết hàng</span>
+                                     <span class="badge text-bg-danger-subtle text-danger border border-danger-subtle">Hết hàng</span>
                                 }
                             </td>
-                            <td class="text-center">
-                                <div class="btn-group">
-                                    <a href="~/Product/Detail/@i" class="btn btn-sm btn-info" title="Chi tiết">
-                                        <i class="bi bi-eye"></i>
-                                    </a>
-                                    <a href="~/Product/Edit/@i" class="btn btn-sm btn-warning" title="Sửa">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </a>
-                                    <a href="~/Product/ListPhoto/@i" class="btn btn-sm btn-primary" title="Hình ảnh">
-                                        <i class="bi bi-images"></i>
-                                    </a>
-                                    <a href="~/Product/ListAttributes/@i" class="btn btn-sm btn-success" title="Thuộc tính">
-                                        <i class="bi bi-list-ul"></i>
-                                    </a>
-                                    <a href="~/Product/Delete/@i" class="btn btn-sm btn-danger" title="Xóa">
-                                        <i class="bi bi-trash"></i>
-                                    </a>
+                            <td class="text-end">
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-light border" type="button" data-bs-toggle="dropdown">
+                                        <i class="bi bi-three-dots"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border">
+                                        <li><a class="dropdown-item" href="~/Product/Detail/@i"><i class="bi bi-eye me-2"></i> Chi tiết</a></li>
+                                        <li><a class="dropdown-item" href="~/Product/Edit/@i"><i class="bi bi-pencil me-2"></i> Chỉnh sửa</a></li>
+                                        <li><a class="dropdown-item" href="~/Product/ListPhoto/@i"><i class="bi bi-images me-2"></i> Thư viện ảnh</a></li>
+                                        <li><a class="dropdown-item text-danger" href="~/Product/Delete/@i"><i class="bi bi-trash me-2"></i> Xóa sản phẩm</a></li>
+                                    </ul>
                                 </div>
                             </td>
                         </tr>
@@ -93,26 +97,18 @@
             </table>
         </div>
 
-        <br />
-
         <!-- Pagination -->
-        <div class="text-center">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Trước</a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <span class="page-link">...</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">10</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Sau</a>
-                </li>
-            </ul>
+        <div class="d-flex align-items-center justify-content-between mt-4">
+            <div class="text-muted small">Hiển thị <b>1 - 8</b> trên tổng số <b>64</b> sản phẩm</div>
+            <nav>
+                <ul class="pagination mb-0">
+                    <li class="page-item disabled"><a class="page-link" href="#"><i class="bi bi-chevron-left"></i></a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#"><i class="bi bi-chevron-right"></i></a></li>
+                </ul>
+            </nav>
         </div>
-
     </div>
 </div>

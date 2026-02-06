@@ -1,33 +1,403 @@
 ﻿@{
-    ViewData["Title"] = "Trang chủ";
+    ViewData["Title"] = "Bảng điều khiển";
 }
 
-<div class="row">
-    <div class="col-md-6 offset-md-3">
-        <div class="card card-primary card-outline mb-4">
-            <div class="card-header">
-                <h3 class="card-title">Đổi mật khẩu</h3>
+@section Styles {
+    <style>
+        .stat-card {
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            padding: 20px;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #18181b;
+            margin-bottom: 5px;
+        }
+        .stat-label {
+            font-size: 14px;
+            color: #71717a;
+        }
+        .stat-delta {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        .delta-up { color: #10b981; }
+        .delta-down { color: #ef4444; }
+
+        .dashboard-card {
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            background: #fff;
+            margin-bottom: 24px;
+        }
+        .dashboard-card .card-header {
+            background: transparent;
+            border-bottom: 1px solid #f4f4f5;
+            padding: 16px 20px;
+        }
+        .dashboard-card .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #18181b;
+        }
+        .dashboard-card .card-body {
+            padding: 20px;
+        }
+
+        .table-custom th {
+            font-weight: 600;
+            color: #71717a;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-top: none;
+        }
+        .table-custom td {
+            vertical-align: middle;
+            color: #3f3f46;
+            font-size: 14px;
+            padding: 12px 0;
+        }
+        .badge-status {
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .product-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f4f4f5;
+        }
+        .product-item:last-child { border-bottom: none; }
+        .product-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 6px;
+            object-fit: cover;
+            margin-right: 12px;
+            border: 1px solid #e5e5e5;
+        }
+        .product-info h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin: 0;
+            color: #18181b;
+        }
+        .product-info p {
+            font-size: 12px;
+            color: #71717a;
+            margin: 0;
+        }
+        .product-sales {
+            margin-left: auto;
+            text-align: right;
+        }
+    </style>
+}
+
+<div class="container-fluid">
+    <!-- Stat Cards Row -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-icon" style="background: #f0f9ff; color: #0ea5e9;">
+                    <i class="bi bi-currency-dollar"></i>
+                </div>
+                <div class="stat-value">45,231.890₫</div>
+                <div class="stat-label">Tổng doanh thu</div>
+                <div class="stat-delta delta-up">
+                    <i class="bi bi-arrow-up"></i> +20.1% so với tháng trước
+                </div>
             </div>
-            <form onsubmit="event.preventDefault()">
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-icon" style="background: #f0fdf4; color: #22c55e;">
+                    <i class="bi bi-cart-check"></i>
+                </div>
+                <div class="stat-value">+2,350</div>
+                <div class="stat-label">Đơn hàng mới</div>
+                <div class="stat-delta delta-up">
+                    <i class="bi bi-arrow-up"></i> +180.1% so với tháng trước
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-icon" style="background: #fefce8; color: #eab308;">
+                    <i class="bi bi-people"></i>
+                </div>
+                <div class="stat-value">+12,234</div>
+                <div class="stat-label">Khách hàng</div>
+                <div class="stat-delta delta-up">
+                    <i class="bi bi-arrow-up"></i> +19% so với tháng trước
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-icon" style="background: #fef2f2; color: #ef4444;">
+                    <i class="bi bi-box-seam"></i>
+                </div>
+                <div class="stat-value">573</div>
+                <div class="stat-label">Sản phẩm hiện có</div>
+                <div class="stat-delta">
+                    Hoạt động tích cực
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="dashboard-card h-100">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h3 class="card-title">Tổng quan doanh số</h3>
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-light border" type="button">
+                            Tháng này <i class="bi bi-chevron-down ms-1"></i>
+                        </button>
+                    </div>
+                </div>
                 <div class="card-body">
-                    <div class="mb-3">
-                        <label for="oldPassword" class="form-label">Mật khẩu cũ:</label>
-                        <input type="password" class="form-control" id="oldPassword" name="oldPassword" required>
+                    <div id="salesChart" style="min-height: 350px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="dashboard-card h-100">
+                <div class="card-header">
+                    <h3 class="card-title">Doanh thu theo loại hàng</h3>
+                </div>
+                <div class="card-body">
+                    <div id="categoryChart" style="min-height: 350px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Row -->
+    <div class="row mt-4">
+        <!-- Latest Orders -->
+        <div class="col-lg-7">
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3 class="card-title">Đơn hàng gần đây</h3>
+                </div>
+                <div class="card-body">
+                    <table class="table table-custom mb-0">
+                        <thead>
+                            <tr>
+                                <th>Mã đơn</th>
+                                <th>Khách hàng</th>
+                                <th>Ngày đặt</th>
+                                <th>Tổng cộng</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold">#ORD-3214</td>
+                                <td>Phan Bá Đủ</td>
+                                <td>06/02/2026</td>
+                                <td>1.250.000₫</td>
+                                <td><span class="badge-status text-bg-success">Hoàn tất</span></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">#ORD-3213</td>
+                                <td>Nguyễn Văn A</td>
+                                <td>06/02/2026</td>
+                                <td>450.000₫</td>
+                                <td><span class="badge-status text-bg-warning">Đang xử lý</span></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">#ORD-3212</td>
+                                <td>Trần Thị B</td>
+                                <td>05/02/2026</td>
+                                <td>3.120.000₫</td>
+                                <td><span class="badge-status text-bg-info">Đang giao</span></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">#ORD-3211</td>
+                                <td>Lê Văn C</td>
+                                <td>05/02/2026</td>
+                                <td>890.000₫</td>
+                                <td><span class="badge-status text-bg-danger">Đã hủy</span></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">#ORD-3210</td>
+                                <td>Hoàng Văn D</td>
+                                <td>04/02/2026</td>
+                                <td>2.100.000₫</td>
+                                <td><span class="badge-status text-bg-success">Hoàn tất</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Top Products -->
+        <div class="col-lg-5">
+            <div class="dashboard-card">
+                <div class="card-header d-flex justify-content-between">
+                    <h3 class="card-title">Sản phẩm bán chạy</h3>
+                    <a href="~/Product" class="text-sm text-decoration-none">Xem tất cả</a>
+                </div>
+                <div class="card-body">
+                    <div class="product-item">
+                        <img src="https://picsum.photos/id/1/200/200" class="product-img" alt="">
+                        <div class="product-info">
+                            <h4>iPhone 15 Pro Max</h4>
+                            <p>Điện thoại & Tablet</p>
+                        </div>
+                        <div class="product-sales">
+                            <span class="fw-bold">124</span>
+                            <div class="text-xs text-muted">Đã bán</div>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="newPassword" class="form-label">Mật khẩu mới:</label>
-                        <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+                    <div class="product-item">
+                        <img src="https://picsum.photos/id/2/200/200" class="product-img" alt="">
+                        <div class="product-info">
+                            <h4>MacBook Pro M3</h4>
+                            <p>Máy tính & Laptop</p>
+                        </div>
+                        <div class="product-sales">
+                            <span class="fw-bold">85</span>
+                            <div class="text-xs text-muted">Đã bán</div>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="confirmPassword" class="form-label">Xác nhận mật khẩu mới:</label>
-                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                    <div class="product-item">
+                        <img src="https://picsum.photos/id/3/200/200" class="product-img" alt="">
+                        <div class="product-info">
+                            <h4>Sony WH-1000XM5</h4>
+                            <p>Phụ kiện âm thanh</p>
+                        </div>
+                        <div class="product-sales">
+                            <span class="fw-bold">62</span>
+                            <div class="text-xs text-muted">Đã bán</div>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <img src="https://picsum.photos/id/4/200/200" class="product-img" alt="">
+                        <div class="product-info">
+                            <h4>iPad Air M2</h4>
+                            <p>Điện thoại & Tablet</p>
+                        </div>
+                        <div class="product-sales">
+                            <span class="fw-bold">48</span>
+                            <div class="text-xs text-muted">Đã bán</div>
+                        </div>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
-                    <a href="~/" class="btn btn-secondary">Hủy bỏ</a>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+        // Sales Chart
+        var salesOptions = {
+            series: [{
+                name: 'Doanh thu',
+                data: [3100, 4000, 2800, 5100, 4200, 10900, 10000, 7000, 9000, 12000, 8000, 15000]
+            }],
+            chart: {
+                height: 350,
+                type: 'area',
+                toolbar: { show: false },
+                fontFamily: 'Inter, sans-serif'
+            },
+            dataLabels: { enabled: false },
+            stroke: { curve: 'smooth', width: 2, colors: ['#18181b'] },
+            fill: {
+                type: 'gradient',
+                gradient: {
+                    shadeIntensity: 1,
+                    opacityFrom: 0.1,
+                    opacityTo: 0.0,
+                    stops: [0, 90, 100]
+                }
+            },
+            xaxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                axisBorder: { show: false },
+                axisTicks: { show: false }
+            },
+            yaxis: {
+                labels: {
+                    formatter: function (val) {
+                        return val.toLocaleString() + '₫';
+                    }
+                }
+            },
+            colors: ['#18181b'],
+            grid: {
+                borderColor: '#f4f4f5',
+                strokeDashArray: 4
+            }
+        };
+
+        var salesChart = new ApexCharts(document.querySelector("#salesChart"), salesOptions);
+        salesChart.render();
+
+        // Category Chart
+        var categoryOptions = {
+            series: [44, 55, 13, 33],
+            chart: {
+                height: 350,
+                type: 'donut',
+                fontFamily: 'Inter, sans-serif'
+            },
+            labels: ['Điện thoại', 'Máy tính', 'Phụ kiện', 'Gia dụng'],
+            colors: ['#18181b', '#71717a', '#a1a1aa', '#e4e4e7'],
+            legend: {
+                position: 'bottom',
+                markers: { radius: 12 }
+            },
+            plotOptions: {
+                pie: {
+                    donut: {
+                        size: '75%',
+                        labels: {
+                            show: true,
+                            total: {
+                                show: true,
+                                label: 'Tổng doanh thu',
+                                formatter: function (w) {
+                                    return '100%';
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            dataLabels: { enabled: false }
+        };
+
+        var categoryChart = new ApexCharts(document.querySelector("#categoryChart"), categoryOptions);
+        categoryChart.render();
+    </script>
+}

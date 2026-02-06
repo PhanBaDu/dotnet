@@ -2,77 +2,62 @@
     ViewData["Title"] = "Quản lý người giao hàng";
 }
 
-<div class="card card-primary card-outline mb-4">
-    <div class="card-header">
-        <h3 class="card-title">Danh sách người giao hàng</h3>
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 class="card-title">Đối tác giao vận (Shippers)</h3>
+        <a href="~/Shipper/Create" class="btn btn-primary btn-sm">
+            <i class="bi bi-person-plus me-1"></i> Bổ sung Shipper
+        </a>
     </div>
     <div class="card-body">
-        <!-- Search Form -->
-        <form action="" method="get">
-            <div class="row">
-                <div class="col-sm-10">
-                    <div class="input-group">
-                        <input type="text" name="searchValue" class="form-control" placeholder="Nhập tên người giao hàng cần tìm...">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="bi bi-search"></i> Tìm kiếm
-                        </button>
-                    </div>
-                </div>
-                <div class="col-sm-2 text-end">
-                    <a href="~/Shipper/Create" class="btn btn-primary">
-                        <i class="bi bi-person-plus-fill"></i> Bổ sung
-                    </a>
-                </div>
+        <form action="" method="get" class="mb-4">
+            <div class="input-group">
+                <span class="input-group-text bg-white border-end-0 text-muted"><i class="bi bi-truck"></i></span>
+                <input type="text" name="searchValue" class="form-control border-start-0" placeholder="Tìm theo tên shipper hoặc số điện thoại...">
+                <button type="submit" class="btn btn-primary px-4">Tìm kiếm</button>
             </div>
         </form>
 
-        <br />
-
-        <!-- Shipper Table -->
         <div class="table-responsive">
-            <table class="table table-bordered table-hover table-striped">
+            <table class="table table-hover align-middle">
                 <thead>
-                    <tr class="table-primary">
-                        <th>Tên người giao hàng</th>
-                        <th>Điện thoại</th>
-                        <th>Email</th>
-                        <th>Phương tiện</th>
-                        <th>Trạng thái</th>
-                        <th style="width: 100px;">Chức năng</th>
+                    <tr>
+                        <th style="width: 250px;">Người giao hàng</th>
+                        <th>Số điện thoại</th>
+                        <th class="text-center">Số đơn đã giao</th>
+                        <th class="text-center">Trạng thái</th>
+                        <th class="text-end">Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @for (int i = 1; i <= 10; i++)
+                    @for (int i = 1; i <= 6; i++)
                     {
                         <tr>
-                            <td>Nguyễn Văn Shipper @i</td>
-                            <td>091234567@i</td>
-                            <td>shipper@i@@delivery.com</td>
                             <td>
-                                @if(i % 3 == 0) {
-                                    <span class="badge bg-info">Xe máy</span>
-                                } else if(i % 3 == 1) {
-                                    <span class="badge bg-success">Xe tải</span>
-                                } else {
-                                    <span class="badge bg-warning">Xe đạp</span>
-                                }
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar-sm me-3 border rounded-circle bg-light d-flex align-items-center justify-content-center text-secondary" style="width: 40px; height: 40px;">
+                                        <i class="bi bi-person-fill"></i>
+                                    </div>
+                                    <div class="fw-bold text-dark">Shipper @(i + 20)</div>
+                                </div>
                             </td>
                             <td>
-                                @if(i % 2 == 0) {
-                                    <span class="badge bg-success">Đang hoạt động</span>
-                                } else {
-                                     <span class="badge bg-danger">Bị khóa</span>
-                                }
+                                <div class="fw-medium">091 122 33@(i)</div>
+                                <div class="text-muted small">shipper@(i)@@liteshop.vn</div>
+                            </td>
+                            <td class="text-center fw-bold">
+                                @(i * 15 + 10)
                             </td>
                             <td class="text-center">
-                                <div class="btn-group">
-                                    <a href="~/Shipper/Edit/@i" class="btn btn-sm btn-warning" title="Sửa">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </a>
-                                    <a href="~/Shipper/Delete/@i" class="btn btn-sm btn-danger" title="Xóa">
-                                        <i class="bi bi-trash"></i>
-                                    </a>
-                                </div>
+                                @if(i % 5 != 0) {
+                                    <span class="badge text-bg-success-subtle text-success border border-success-subtle">Sẵn sàng</span>
+                                } else {
+                                     <span class="badge text-bg-warning-subtle text-warning border border-warning-subtle">Bận</span>
+                                }
+                            </td>
+                            <td class="text-end">
+                                <a href="~/Shipper/Edit/@i" class="btn btn-sm btn-light border px-2"><i class="bi bi-pencil"></i></a>
+                                <a href="~/Shipper/Delete/@i" class="btn btn-sm btn-light border text-danger px-2"><i class="bi bi-trash"></i></a>
                             </td>
                         </tr>
                     }
@@ -80,26 +65,13 @@
             </table>
         </div>
 
-        <br />
-
-        <!-- Pagination -->
-        <div class="text-center">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Trước</a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <span class="page-link">...</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">10</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Sau</a>
-                </li>
-            </ul>
+        <div class="d-flex justify-content-between align-items-center mt-4">
+            <div class="text-muted small">Hiển thị các đối tác vận chuyển</div>
+            <nav>
+                <ul class="pagination pagination-sm mb-0">
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                </ul>
+            </nav>
         </div>
-
     </div>
 </div>

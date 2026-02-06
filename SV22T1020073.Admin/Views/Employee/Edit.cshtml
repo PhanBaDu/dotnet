@@ -1,64 +1,101 @@
 @{
-    ViewData["Title"] = "Sửa thông tin nhân viên";
+    ViewData["Title"] = "Hồ sơ nhân viên";
 }
 
-<div class="card card-warning card-outline mb-4">
-    <div class="card-header">
-        <h3 class="card-title">Sửa thông tin nhân viên</h3>
+<div class="row g-4">
+    <div class="col-lg-4">
+        <div class="card h-100">
+            <div class="card-body text-center pt-5">
+                <div class="position-relative d-inline-block mb-4">
+                    <img src="https://i.pravatar.cc/150?u=active" class="rounded-circle border border-4 border-white shadow-sm" style="width: 120px; height: 120px;" alt="">
+                    <button class="btn btn-sm btn-primary position-absolute bottom-0 end-0 rounded-circle" style="width: 32px; height: 32px; padding: 0;">
+                        <i class="bi bi-camera shadow-sm"></i>
+                    </button>
+                </div>
+                <h4 class="fw-bold mb-1">Lê Văn Nhân Viên</h4>
+                <p class="text-muted small mb-4">Mã nhân viên: EMP-779</p>
+                
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary btn-sm"><i class="bi bi-pencil me-2"></i>Chỉnh sửa ảnh</button>
+                    <button class="btn btn-light border btn-sm"><i class="bi bi-key me-2"></i>Đổi mật khẩu</button>
+                </div>
+                <hr class="my-4">
+                <div class="text-start">
+                    <div class="small fw-bold text-uppercase text-muted mb-2">Thông tin công việc</div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted small">Phòng ban:</span>
+                        <span class="small fw-medium">Kinh doanh</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted small">Chức vụ:</span>
+                        <span class="small fw-medium">Trưởng phòng</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span class="text-muted small">Ngày vào làm:</span>
+                        <span class="small fw-medium">15/01/2024</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <form onsubmit="event.preventDefault()">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="employeeName" class="form-label">Tên nhân viên: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="employeeName" name="employeeName" value="Nhân viên 1" required>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email: <span class="text-danger">*</span></label>
-                        <input type="email" class="form-control" id="email" name="email" value="employee1@company.com" required>
-                    </div>
-                </div>
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h3 class="card-title">Hồ sơ cá nhân</h3>
             </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="phone" class="form-label">Điện thoại: <span class="text-danger">*</span></label>
-                        <input type="tel" class="form-control" id="phone" name="phone" value="0987654321" required>
+            <div class="card-body p-4">
+                <form onsubmit="event.preventDefault()">
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-12">
+                            <label class="form-label fw-semibold">Họ và tên nhân viên <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" value="Lê Văn Nhân Viên">
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="role" class="form-label">Chức vụ: <span class="text-danger">*</span></label>
-                        <select class="form-select" id="role" name="role" required>
-                            <option value="">-- Chọn chức vụ --</option>
-                            <option value="staff" selected>Staff</option>
-                            <option value="manager">Manager</option>
-                            <option value="admin">Admin</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
 
-            <div class="mb-3">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="isActive" name="isActive" checked>
-                    <label class="form-check-label" for="isActive">
-                        Đang hoạt động
-                    </label>
-                </div>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Email công việc <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light text-muted"><i class="bi bi-envelope"></i></span>
+                                <input type="email" class="form-control" value="le.nhanvien@liteshop.vn">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Số điện thoại <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light text-muted"><i class="bi bi-phone"></i></span>
+                                <input type="tel" class="form-control" value="0901234567">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Chức vụ <span class="text-danger">*</span></label>
+                            <select class="form-select">
+                                <option value="1">Nhân viên</option>
+                                <option value="2" selected>Trưởng phòng</option>
+                                <option value="3">Quản trị viên hệ thống</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Trạng thái tài khoản</label>
+                            <div class="form-check form-switch mt-2">
+                                <input class="form-check-input" type="checkbox" id="employeeStatus" checked>
+                                <label class="form-check-label text-success fw-medium" for="employeeStatus">Đang hoạt động</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-12 text-end">
+                            <hr class="mb-4">
+                            <a href="~/Employee" class="btn btn-light border px-4 me-2">Quay lại</a>
+                            <button type="submit" class="btn btn-primary px-4">Lưu hồ sơ</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-        <div class="card-footer">
-            <button type="submit" class="btn btn-warning">
-                <i class="bi bi-save"></i> Cập nhật
-            </button>
-            <a href="~/Employee" class="btn btn-secondary">
-                <i class="bi bi-x-circle"></i> Hủy bỏ
-            </a>
-        </div>
-    </form>
+    </div>
 </div>

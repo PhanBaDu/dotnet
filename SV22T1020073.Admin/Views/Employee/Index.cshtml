@@ -2,82 +2,82 @@
     ViewData["Title"] = "Quản lý nhân viên";
 }
 
-<div class="card card-primary card-outline mb-4">
-    <div class="card-header">
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
         <h3 class="card-title">Danh sách nhân viên</h3>
+        <a href="~/Employee/Create" class="btn btn-primary btn-sm">
+            <i class="bi bi-person-plus me-1"></i> Bổ sung nhân sự
+        </a>
     </div>
     <div class="card-body">
         <!-- Search Form -->
-        <form action="" method="get">
-            <div class="row">
-                <div class="col-sm-10">
-                    <div class="input-group">
-                        <input type="text" name="searchValue" class="form-control" placeholder="Nhập tên nhân viên cần tìm...">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="bi bi-search"></i> Tìm kiếm
-                        </button>
-                    </div>
-                </div>
-                <div class="col-sm-2 text-end">
-                    <a href="~/Employee/Create" class="btn btn-primary">
-                        <i class="bi bi-person-plus-fill"></i> Bổ sung
-                    </a>
-                </div>
+        <form action="" method="get" class="mb-4">
+            <div class="input-group">
+                <span class="input-group-text bg-white border-end-0 text-muted"><i class="bi bi-search"></i></span>
+                <input type="text" name="searchValue" class="form-control border-start-0" placeholder="Tìm theo tên nhân viên, email hoặc phòng ban...">
+                <button type="submit" class="btn btn-primary px-4">Tìm kiếm</button>
             </div>
         </form>
 
-        <br />
-
         <!-- Employee Table -->
         <div class="table-responsive">
-            <table class="table table-bordered table-hover table-striped">
+            <table class="table table-hover align-middle">
                 <thead>
-                    <tr class="table-primary">
-                        <th>Tên nhân viên</th>
-                        <th>Email</th>
-                        <th>Điện thoại</th>
-                        <th>Chức vụ</th>
-                        <th>Trạng thái</th>
-                        <th style="width: 150px;">Chức năng</th>
+                    <tr>
+                        <th style="width: 250px;">Nhân viên</th>
+                        <th>Phòng ban / Chức vụ</th>
+                        <th>Thông tin liên hệ</th>
+                        <th class="text-center">Trạng thái</th>
+                        <th class="text-end">Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @for (int i = 1; i <= 10; i++)
+                    @for (int i = 1; i <= 6; i++)
                     {
                         <tr>
-                            <td>Nhân viên @i</td>
-                            <td>employee@i@@company.com</td>
-                            <td>098765432@i</td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="https://i.pravatar.cc/150?u=@i" class="rounded-circle border me-3" style="width: 40px; height: 40px;" alt="">
+                                    <div>
+                                        <div class="fw-bold text-dark text-truncate" style="max-width: 150px;">Lê Văn @(i + 10)</div>
+                                        <div class="text-muted small">Mã NV: EMP-@(100 + i)</div>
+                                    </div>
+                                </div>
+                            </td>
                             <td>
                                 @if(i % 3 == 0) {
-                                    <span class="badge bg-danger">Admin</span>
+                                    <div class="fw-medium">Quản trị viên</div>
+                                    <div class="text-muted small">Ban Giám đốc</div>
                                 } else if(i % 3 == 1) {
-                                    <span class="badge bg-warning">Manager</span>
+                                    <div class="fw-medium">Trưởng phòng</div>
+                                    <div class="text-muted small">Kinh doanh</div>
                                 } else {
-                                    <span class="badge bg-info">Staff</span>
+                                    <div class="fw-medium">Nhân viên</div>
+                                    <div class="text-muted small">Kho vận</div>
                                 }
                             </td>
                             <td>
-                                @if(i % 2 == 0) {
-                                    <span class="badge bg-success">Đang hoạt động</span>
-                                } else {
-                                     <span class="badge bg-secondary">Bị khóa</span>
-                                }
+                                <div class="small text-muted"><i class="bi bi-envelope me-2"></i>emp@(i)@@liteshop.vn</div>
+                                <div class="small text-muted"><i class="bi bi-phone me-2"></i>033 444 55@(i)</div>
                             </td>
                             <td class="text-center">
-                                <div class="btn-group">
-                                    <a href="~/Employee/Edit/@i" class="btn btn-sm btn-warning" title="Sửa">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </a>
-                                    <a href="~/Employee/ChangePassword/@i" class="btn btn-sm btn-info" title="Đổi mật khẩu">
-                                        <i class="bi bi-key"></i>
-                                    </a>
-                                    <a href="~/Employee/ChangeRole/@i" class="btn btn-sm btn-success" title="Đổi quyền">
-                                        <i class="bi bi-shield-check"></i>
-                                    </a>
-                                    <a href="~/Employee/Delete/@i" class="btn btn-sm btn-danger" title="Xóa">
-                                        <i class="bi bi-trash"></i>
-                                    </a>
+                                @if(i % 2 == 0) {
+                                    <span class="badge text-bg-success-subtle text-success border border-success-subtle">Đang làm việc</span>
+                                } else {
+                                     <span class="badge text-bg-secondary-subtle text-secondary border border-secondary-subtle">Đang nghỉ</span>
+                                }
+                            </td>
+                            <td class="text-end">
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-light border px-2" type="button" data-bs-toggle="dropdown">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end border shadow-sm">
+                                        <li><a class="dropdown-item" href="~/Employee/Edit/@i"><i class="bi bi-pencil me-2"></i> Hồ sơ</a></li>
+                                        <li><a class="dropdown-item" href="~/Employee/ChangePassword/@i"><i class="bi bi-key me-2"></i> Đổi mật khẩu</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="~/Employee/Delete/@i"><i class="bi bi-person-x me-2"></i> Thôi việc</a></li>
+                                    </ul>
                                 </div>
                             </td>
                         </tr>
@@ -86,26 +86,15 @@
             </table>
         </div>
 
-        <br />
-
         <!-- Pagination -->
-        <div class="text-center">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Trước</a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <span class="page-link">...</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">10</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Sau</a>
-                </li>
-            </ul>
+        <div class="d-flex align-items-center justify-content-between mt-4">
+            <div class="text-muted small">Hiển thị nhân viên mẫu tĩnh</div>
+            <nav>
+                <ul class="pagination pagination-sm mb-0">
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                </ul>
+            </nav>
         </div>
-
     </div>
 </div>

@@ -2,61 +2,51 @@
     ViewData["Title"] = "Quản lý loại hàng";
 }
 
-<div class="card card-primary card-outline mb-4">
-    <div class="card-header">
-        <h3 class="card-title">Danh sách loại hàng</h3>
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 class="card-title">Danh mục loại hàng</h3>
+        <a href="~/Category/Create" class="btn btn-primary btn-sm">
+            <i class="bi bi-tag me-1"></i> Thêm loại hàng
+        </a>
     </div>
     <div class="card-body">
-        <!-- Search Form -->
-        <form action="" method="get">
-            <div class="row">
-                <div class="col-sm-10">
-                    <div class="input-group">
-                        <input type="text" name="searchValue" class="form-control" placeholder="Nhập tên loại hàng cần tìm...">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="bi bi-search"></i> Tìm kiếm
-                        </button>
-                    </div>
-                </div>
-                <div class="col-sm-2 text-end">
-                    <a href="~/Category/Create" class="btn btn-primary">
-                        <i class="bi bi-plus-circle-fill"></i> Bổ sung
-                    </a>
-                </div>
+        <form action="" method="get" class="mb-4">
+            <div class="input-group">
+                <input type="text" name="searchValue" class="form-control" placeholder="Nhập tên loại hàng hoặc mã danh mục...">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-search me-1"></i> Tìm kiếm
+                </button>
             </div>
         </form>
 
-        <br />
-
-        <!-- Category Table -->
         <div class="table-responsive">
-            <table class="table table-bordered table-hover table-striped">
+            <table class="table table-hover align-middle">
                 <thead>
-                    <tr class="table-primary">
-                        <th style="width: 80px;">Mã loại</th>
+                    <tr>
+                        <th style="width: 120px;">Mã loại</th>
                         <th>Tên loại hàng</th>
-                        <th>Mô tả</th>
-                        <th>Số sản phẩm</th>
-                        <th style="width: 100px;">Chức năng</th>
+                        <th>Mô tả ghi chú</th>
+                        <th class="text-center">Số mặt hàng</th>
+                        <th class="text-end">Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @for (int i = 1; i <= 10; i++)
+                    @for (int i = 1; i <= 8; i++)
                     {
                         <tr>
-                            <td>CAT00@i</td>
-                            <td>Loại hàng @i</td>
-                            <td>Mô tả cho loại hàng @i</td>
-                            <td><span class="badge bg-info">@(i * 5) sản phẩm</span></td>
+                            <td class="fw-bold">CAT-00@(i)</td>
+                            <td class="fw-medium text-dark">
+                                @(new string[] {"Điện thoại", "Laptop", "Âm thanh", "Đồng hồ", "Máy ảnh", "Tivi", "Đồ gia dụng", "Phụ kiện"}[i-1])
+                            </td>
+                            <td class="small text-muted text-truncate" style="max-width: 300px;">
+                                Các sản phẩm thuộc nhóm @(new string[] {"Điện thoại", "Laptop", "Âm thanh", "Đồng hồ", "Máy ảnh", "Tivi", "Đồ gia dụng", "Phụ kiện"}[i-1]) chính hãng.
+                            </td>
                             <td class="text-center">
-                                <div class="btn-group">
-                                    <a href="~/Category/Edit/@i" class="btn btn-sm btn-warning" title="Sửa">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </a>
-                                    <a href="~/Category/Delete/@i" class="btn btn-sm btn-danger" title="Xóa">
-                                        <i class="bi bi-trash"></i>
-                                    </a>
-                                </div>
+                                <span class="badge rounded-pill bg-light text-dark border fw-bold px-3">@(i * 12)</span>
+                            </td>
+                            <td class="text-end">
+                                <a href="~/Category/Edit/@i" class="btn btn-sm btn-light border me-1" title="Sửa"><i class="bi bi-pencil"></i></a>
+                                <a href="~/Category/Delete/@i" class="btn btn-sm btn-light border text-danger" title="Xóa"><i class="bi bi-trash"></i></a>
                             </td>
                         </tr>
                     }
@@ -64,26 +54,14 @@
             </table>
         </div>
 
-        <br />
-
-        <!-- Pagination -->
-        <div class="text-center">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Trước</a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <span class="page-link">...</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">10</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Sau</a>
-                </li>
-            </ul>
+        <div class="d-flex justify-content-between align-items-center mt-4">
+            <div class="text-muted small">Dữ liệu mẫu cho cấu trúc danh mục</div>
+            <nav>
+                <ul class="pagination pagination-sm mb-0">
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                </ul>
+            </nav>
         </div>
-
     </div>
 </div>

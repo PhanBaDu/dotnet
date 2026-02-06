@@ -1,4 +1,4 @@
-<nav class="app-header navbar navbar-expand bg-body-secondary">
+<nav class="app-header navbar navbar-expand bg-white border-bottom">
     <div class="container-fluid">
         <!--begin::Start Navbar Links-->
         <ul class="navbar-nav">
@@ -14,25 +14,33 @@
         <ul class="navbar-nav ms-auto">
             <!--begin::User Menu Dropdown-->
             <li class="nav-item dropdown user-menu">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                    <img src="~/lib/adminlte/assets/img/user2-160x160.jpg" class="user-image rounded-circle shadow" alt="User Image" />
-                    <span class="d-none d-md-inline">Phan Bá Đủ</span>
+                <a href="#" class="nav-link dropdown-toggle d-flex align-items-center gap-2" data-bs-toggle="dropdown">
+                    <img src="https://github.com/evilrabbit.png" class="user-image rounded-circle border shadow-sm" style="width: 32px; height: 32px;" alt="User Image" />
+                    <span class="d-none d-md-inline fw-semibold text-dark">Phan Bá Đủ</span>
+                    <i class="bi bi-chevron-down small text-muted"></i>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
-                    <!--begin::User Image-->
-                    <li class="user-header text-bg-primary">
-                        <img src="~/lib/adminlte/assets/img/user2-160x160.jpg" class="rounded-circle shadow" alt="User Image" />
-                        <p>
-                            Phan Bá Đủ
-                        </p>
+                <ul class="dropdown-menu dropdown-menu-end border shadow-lg mt-2">
+                    <li class="px-3 py-2 mb-1">
+                        <div class="fw-bold text-dark">Phan Bá Đủ</div>
+                        <div class="small text-muted text-truncate" style="max-width: 150px;">phanbadu@gmail.com</div>
                     </li>
-                    <!--end::User Image-->
-                    <!--begin::Menu Footer-->
-                    <li class="user-footer">
-                        <a href="~/Account/ChangePassword" class="btn btn-default btn-flat">Đổi mật khẩu</a>
-                        <a href="~/Account/Logout" class="btn btn-default btn-flat float-end">Thoát</a>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <a href="~/Account/ChangePassword" class="dropdown-item">
+                            <i class="bi bi-shield-lock"></i> Đổi mật khẩu
+                        </a>
                     </li>
-                    <!--end::Menu Footer-->
+                    <li>
+                        <a href="~/Account/Profile" class="dropdown-item">
+                            <i class="bi bi-person"></i> Hồ sơ cá nhân
+                        </a>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <a href="~/Account/Logout" class="dropdown-item text-danger">
+                            <i class="bi bi-box-arrow-right text-danger"></i> Thoát hệ thống
+                        </a>
+                    </li>
                 </ul>
             </li>
             <!--end::User Menu Dropdown-->
