@@ -1,0 +1,11 @@
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.DataLayers/bin/Debug/net10.0/SV22T1020073.DataLayers.deps.json
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.DataLayers/bin/Debug/net10.0/SV22T1020073.DataLayers.dll
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.DataLayers/bin/Debug/net10.0/SV22T1020073.DataLayers.pdb
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.DataLayers/obj/Debug/net10.0/SV22T1020073.DataLayers.GeneratedMSBuildEditorConfig.editorconfig
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.DataLayers/obj/Debug/net10.0/SV22T1020073.DataLayers.AssemblyInfoInputs.cache
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.DataLayers/obj/Debug/net10.0/SV22T1020073.DataLayers.AssemblyInfo.cs
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.DataLayers/obj/Debug/net10.0/SV22T1020073.DataLayers.csproj.CoreCompileInputs.cache
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.DataLayers/obj/Debug/net10.0/SV22T1020073.DataLayers.dll
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.DataLayers/obj/Debug/net10.0/refint/SV22T1020073.DataLayers.dll
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.DataLayers/obj/Debug/net10.0/SV22T1020073.DataLayers.pdb
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.DataLayers/obj/Debug/net10.0/ref/SV22T1020073.DataLayers.dll

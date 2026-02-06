@@ -1,0 +1,11 @@
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.BusinessLayers/bin/Debug/net10.0/SV22T1020073.BusinessLayers.deps.json
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.BusinessLayers/bin/Debug/net10.0/SV22T1020073.BusinessLayers.dll
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.BusinessLayers/bin/Debug/net10.0/SV22T1020073.BusinessLayers.pdb
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.BusinessLayers/obj/Debug/net10.0/SV22T1020073.BusinessLayers.GeneratedMSBuildEditorConfig.editorconfig
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.BusinessLayers/obj/Debug/net10.0/SV22T1020073.BusinessLayers.AssemblyInfoInputs.cache
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.BusinessLayers/obj/Debug/net10.0/SV22T1020073.BusinessLayers.AssemblyInfo.cs
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.BusinessLayers/obj/Debug/net10.0/SV22T1020073.BusinessLayers.csproj.CoreCompileInputs.cache
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.BusinessLayers/obj/Debug/net10.0/SV22T1020073.BusinessLayers.dll
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.BusinessLayers/obj/Debug/net10.0/refint/SV22T1020073.BusinessLayers.dll
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.BusinessLayers/obj/Debug/net10.0/SV22T1020073.BusinessLayers.pdb
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.BusinessLayers/obj/Debug/net10.0/ref/SV22T1020073.BusinessLayers.dll

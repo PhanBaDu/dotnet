@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Sửa loại hàng";
+}
+
+<div class="card card-warning card-outline mb-4">
+    <div class="card-header">
+        <h3 class="card-title">Sửa thông tin loại hàng</h3>
+    </div>
+    <form onsubmit="event.preventDefault()">
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="categoryName" class="form-label">Tên loại hàng: <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="categoryName" name="categoryName" value="Loại hàng 1" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Mô tả:</label>
+                <textarea class="form-control" id="description" name="description" rows="4">Mô tả cho loại hàng 1</textarea>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-warning">
+                <i class="bi bi-save"></i> Cập nhật
+            </button>
+            <a href="~/Category" class="btn btn-secondary">
+                <i class="bi bi-x-circle"></i> Hủy bỏ
+            </a>
+        </div>
+    </form>
+</div>

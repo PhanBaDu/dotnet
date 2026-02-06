@@ -1,0 +1,53 @@
+@{
+    ViewData["Title"] = "Xóa khách hàng";
+}
+
+<div class="card card-danger card-outline mb-4">
+    <div class="card-header">
+        <h3 class="card-title">Xác nhận xóa khách hàng</h3>
+    </div>
+    <div class="card-body">
+        <div class="alert alert-warning">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            <strong>Cảnh báo!</strong> Bạn có chắc chắn muốn xóa khách hàng này không?
+        </div>
+
+        <h5>Thông tin khách hàng:</h5>
+        <table class="table table-bordered">
+            <tr>
+                <th style="width: 200px;">Tên khách hàng:</th>
+                <td>Công ty ABC 1</td>
+            </tr>
+            <tr>
+                <th>Tên giao dịch:</th>
+                <td>Phan Bá Đủ 1</td>
+            </tr>
+            <tr>
+                <th>Điện thoại:</th>
+                <td>0909123451</td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td>contact@abc1.com</td>
+            </tr>
+            <tr>
+                <th>Địa chỉ:</th>
+                <td>Số 1, Đường ABC, TP.HCM</td>
+            </tr>
+            <tr>
+                <th>Trạng thái:</th>
+                <td><span class="badge bg-success">Đang hoạt động</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="card-footer">
+        <form onsubmit="event.preventDefault()" style="display: inline;">
+            <button type="submit" class="btn btn-danger">
+                <i class="bi bi-trash"></i> Xác nhận xóa
+            </button>
+        </form>
+        <a href="~/Customer" class="btn btn-secondary">
+            <i class="bi bi-x-circle"></i> Hủy bỏ
+        </a>
+    </div>
+</div>

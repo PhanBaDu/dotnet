@@ -1,0 +1,53 @@
+@{
+    ViewData["Title"] = "Xóa nhà cung cấp";
+}
+
+<div class="card card-danger card-outline mb-4">
+    <div class="card-header">
+        <h3 class="card-title">Xác nhận xóa nhà cung cấp</h3>
+    </div>
+    <div class="card-body">
+        <div class="alert alert-warning">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            <strong>Cảnh báo!</strong> Bạn có chắc chắn muốn xóa nhà cung cấp này không?
+        </div>
+
+        <h5>Thông tin nhà cung cấp:</h5>
+        <table class="table table-bordered">
+            <tr>
+                <th style="width: 200px;">Tên nhà cung cấp:</th>
+                <td>Công ty Nhà cung cấp 1</td>
+            </tr>
+            <tr>
+                <th>Tên giao dịch:</th>
+                <td>Nguyễn Văn A 1</td>
+            </tr>
+            <tr>
+                <th>Điện thoại:</th>
+                <td>0987654321</td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td>supplier1@company.com</td>
+            </tr>
+            <tr>
+                <th>Địa chỉ:</th>
+                <td>Số 1, Đường XYZ, Hà Nội</td>
+            </tr>
+            <tr>
+                <th>Trạng thái:</th>
+                <td><span class="badge bg-success">Đang hoạt động</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="card-footer">
+        <form onsubmit="event.preventDefault()" style="display: inline;">
+            <button type="submit" class="btn btn-danger">
+                <i class="bi bi-trash"></i> Xác nhận xóa
+            </button>
+        </form>
+        <a href="~/Supplier" class="btn btn-secondary">
+            <i class="bi bi-x-circle"></i> Hủy bỏ
+        </a>
+    </div>
+</div>

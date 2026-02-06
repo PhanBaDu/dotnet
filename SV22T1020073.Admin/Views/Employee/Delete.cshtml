@@ -1,0 +1,49 @@
+@{
+    ViewData["Title"] = "Xóa nhân viên";
+}
+
+<div class="card card-danger card-outline mb-4">
+    <div class="card-header">
+        <h3 class="card-title">Xác nhận xóa nhân viên</h3>
+    </div>
+    <div class="card-body">
+        <div class="alert alert-warning">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            <strong>Cảnh báo!</strong> Bạn có chắc chắn muốn xóa nhân viên này không?
+        </div>
+
+        <h5>Thông tin nhân viên:</h5>
+        <table class="table table-bordered">
+            <tr>
+                <th style="width: 200px;">Tên nhân viên:</th>
+                <td>Nhân viên 1</td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td>employee1@company.com</td>
+            </tr>
+            <tr>
+                <th>Điện thoại:</th>
+                <td>0987654321</td>
+            </tr>
+            <tr>
+                <th>Chức vụ:</th>
+                <td><span class="badge bg-info">Staff</span></td>
+            </tr>
+            <tr>
+                <th>Trạng thái:</th>
+                <td><span class="badge bg-success">Đang hoạt động</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="card-footer">
+        <form onsubmit="event.preventDefault()" style="display: inline;">
+            <button type="submit" class="btn btn-danger">
+                <i class="bi bi-trash"></i> Xác nhận xóa
+            </button>
+        </form>
+        <a href="~/Employee" class="btn btn-secondary">
+            <i class="bi bi-x-circle"></i> Hủy bỏ
+        </a>
+    </div>
+</div>

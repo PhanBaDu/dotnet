@@ -1,0 +1,84 @@
+@{
+    ViewData["Title"] = "Sửa sản phẩm";
+}
+
+<div class="card card-warning card-outline mb-4">
+    <div class="card-header">
+        <h3 class="card-title">Sửa thông tin sản phẩm</h3>
+    </div>
+    <form onsubmit="event.preventDefault()">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="productName" class="form-label">Tên sản phẩm: <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="productName" name="productName" value="Sản phẩm 1" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="categoryId" class="form-label">Loại hàng: <span class="text-danger">*</span></label>
+                        <select class="form-select" id="categoryId" name="categoryId" required>
+                            <option value="">-- Chọn loại hàng --</option>
+                            <option value="1" selected>Loại hàng 1</option>
+                            <option value="2">Loại hàng 2</option>
+                            <option value="3">Loại hàng 3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="supplierId" class="form-label">Nhà cung cấp: <span class="text-danger">*</span></label>
+                        <select class="form-select" id="supplierId" name="supplierId" required>
+                            <option value="">-- Chọn nhà cung cấp --</option>
+                            <option value="1" selected>Nhà cung cấp 1</option>
+                            <option value="2">Nhà cung cấp 2</option>
+                            <option value="3">Nhà cung cấp 3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="unit" class="form-label">Đơn vị: <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="unit" name="unit" value="Cái" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Giá: <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" id="price" name="price" value="100000" min="0" step="1000" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Trạng thái: <span class="text-danger">*</span></label>
+                        <select class="form-select" id="status" name="status" required>
+                            <option value="available" selected>Còn hàng</option>
+                            <option value="out-of-stock">Hết hàng</option>
+                            <option value="discontinued">Ngừng kinh doanh</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Mô tả:</label>
+                <textarea class="form-control" id="description" name="description" rows="4">Đây là mô tả chi tiết cho sản phẩm 1. Sản phẩm có chất lượng cao, được nhập khẩu từ các nhà cung cấp uy tín.</textarea>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-warning">
+                <i class="bi bi-save"></i> Cập nhật
+            </button>
+            <a href="~/Product" class="btn btn-secondary">
+                <i class="bi bi-x-circle"></i> Hủy bỏ
+            </a>
+        </div>
+    </form>
+</div>

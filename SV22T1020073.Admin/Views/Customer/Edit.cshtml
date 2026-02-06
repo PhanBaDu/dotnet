@@ -1,0 +1,64 @@
+@{
+    ViewData["Title"] = "Sửa thông tin khách hàng";
+}
+
+<div class="card card-warning card-outline mb-4">
+    <div class="card-header">
+        <h3 class="card-title">Sửa thông tin khách hàng</h3>
+    </div>
+    <form onsubmit="event.preventDefault()">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="customerName" class="form-label">Tên khách hàng: <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="customerName" name="customerName" value="Công ty ABC 1" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="contactName" class="form-label">Tên giao dịch: <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="contactName" name="contactName" value="Phan Bá Đủ 1" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Điện thoại: <span class="text-danger">*</span></label>
+                        <input type="tel" class="form-control" id="phone" name="phone" value="0909123451" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email: <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" id="email" name="email" value="contact@abc1.com" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="address" class="form-label">Địa chỉ: <span class="text-danger">*</span></label>
+                <textarea class="form-control" id="address" name="address" rows="3" required>Số 1, Đường ABC, TP.HCM</textarea>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="isActive" name="isActive" checked>
+                    <label class="form-check-label" for="isActive">
+                        Đang hoạt động
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-warning">
+                <i class="bi bi-save"></i> Cập nhật
+            </button>
+            <a href="~/Customer" class="btn btn-secondary">
+                <i class="bi bi-x-circle"></i> Hủy bỏ
+            </a>
+        </div>
+    </form>
+</div>

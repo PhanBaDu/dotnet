@@ -1,0 +1,52 @@
+@{
+    ViewData["Title"] = "Sửa hình ảnh sản phẩm";
+}
+
+<div class="card card-warning card-outline mb-4">
+    <div class="card-header">
+        <h3 class="card-title">Sửa hình ảnh cho sản phẩm: <strong>Sản phẩm 1</strong></h3>
+    </div>
+    <form onsubmit="event.preventDefault()">
+        <div class="card-body">
+            <div class="mb-3">
+                <label class="form-label">Hình ảnh hiện tại:</label>
+                <div class="text-center border rounded p-3">
+                    <img src="https://via.placeholder.com/400x300?text=Current+Photo" class="img-fluid" style="max-height: 300px;" alt="Current Photo">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="photoFile" class="form-label">Thay đổi hình ảnh:</label>
+                <input type="file" class="form-control" id="photoFile" name="photoFile" accept="image/*">
+                <small class="form-text text-muted">Để trống nếu không muốn thay đổi hình ảnh</small>
+            </div>
+
+            <div class="mb-3">
+                <label for="photoTitle" class="form-label">Tiêu đề hình ảnh:</label>
+                <input type="text" class="form-control" id="photoTitle" name="photoTitle" value="Hình ảnh 1">
+            </div>
+
+            <div class="mb-3">
+                <label for="displayOrder" class="form-label">Thứ tự hiển thị:</label>
+                <input type="number" class="form-control" id="displayOrder" name="displayOrder" value="1" min="1">
+            </div>
+
+            <div class="mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="isPrimary" name="isPrimary" checked>
+                    <label class="form-check-label" for="isPrimary">
+                        Đặt làm ảnh chính
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-warning">
+                <i class="bi bi-save"></i> Cập nhật
+            </button>
+            <a href="~/Product/ListPhoto/1" class="btn btn-secondary">
+                <i class="bi bi-x-circle"></i> Hủy bỏ
+            </a>
+        </div>
+    </form>
+</div>

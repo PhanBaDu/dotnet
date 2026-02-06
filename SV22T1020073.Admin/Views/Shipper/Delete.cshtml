@@ -1,0 +1,49 @@
+@{
+    ViewData["Title"] = "Xóa người giao hàng";
+}
+
+<div class="card card-danger card-outline mb-4">
+    <div class="card-header">
+        <h3 class="card-title">Xác nhận xóa người giao hàng</h3>
+    </div>
+    <div class="card-body">
+        <div class="alert alert-warning">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            <strong>Cảnh báo!</strong> Bạn có chắc chắn muốn xóa người giao hàng này không?
+        </div>
+
+        <h5>Thông tin người giao hàng:</h5>
+        <table class="table table-bordered">
+            <tr>
+                <th style="width: 200px;">Tên người giao hàng:</th>
+                <td>Nguyễn Văn Shipper 1</td>
+            </tr>
+            <tr>
+                <th>Điện thoại:</th>
+                <td>0912345671</td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td>shipper1@delivery.com</td>
+            </tr>
+            <tr>
+                <th>Phương tiện:</th>
+                <td><span class="badge bg-info">Xe máy</span></td>
+            </tr>
+            <tr>
+                <th>Trạng thái:</th>
+                <td><span class="badge bg-success">Đang hoạt động</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="card-footer">
+        <form onsubmit="event.preventDefault()" style="display: inline;">
+            <button type="submit" class="btn btn-danger">
+                <i class="bi bi-trash"></i> Xác nhận xóa
+            </button>
+        </form>
+        <a href="~/Shipper" class="btn btn-secondary">
+            <i class="bi bi-x-circle"></i> Hủy bỏ
+        </a>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+@{
+    ViewData["Title"] = "Chi tiết sản phẩm";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card card-info card-outline mb-4">
+            <div class="card-header">
+                <h3 class="card-title">Thông tin sản phẩm: <strong>Sản phẩm 1</strong></h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th style="width: 200px;">Mã sản phẩm:</th>
+                        <td>PRD001</td>
+                    </tr>
+                    <tr>
+                        <th>Tên sản phẩm:</th>
+                        <td>Sản phẩm 1</td>
+                    </tr>
+                    <tr>
+                        <th>Loại hàng:</th>
+                        <td>Loại hàng 1</td>
+                    </tr>
+                    <tr>
+                        <th>Nhà cung cấp:</th>
+                        <td>Nhà cung cấp 1</td>
+                    </tr>
+                    <tr>
+                        <th>Giá:</th>
+                        <td class="text-danger fw-bold">100,000 VNĐ</td>
+                    </tr>
+                    <tr>
+                        <th>Đơn vị:</th>
+                        <td>Cái</td>
+                    </tr>
+                    <tr>
+                        <th>Trạng thái:</th>
+                        <td><span class="badge bg-success">Còn hàng</span></td>
+                    </tr>
+                    <tr>
+                        <th>Mô tả:</th>
+                        <td>Đây là mô tả chi tiết cho sản phẩm 1. Sản phẩm có chất lượng cao, được nhập khẩu từ các nhà cung cấp uy tín.</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card-footer">
+                <a href="~/Product/Edit/1" class="btn btn-warning">
+                    <i class="bi bi-pencil-square"></i> Sửa thông tin
+                </a>
+                <a href="~/Product" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Quay lại
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <!-- Product Images -->
+        <div class="card card-primary card-outline mb-3">
+            <div class="card-header">
+                <h3 class="card-title">Hình ảnh sản phẩm</h3>
+            </div>
+            <div class="card-body text-center">
+                <img src="https://via.placeholder.com/300x300?text=Product+Image" class="img-fluid mb-3" alt="Product Image">
+                <div>
+                    <a href="~/Product/ListPhoto/1" class="btn btn-sm btn-primary">
+                        <i class="bi bi-images"></i> Quản lý hình ảnh
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="card card-secondary card-outline">
+            <div class="card-header">
+                <h3 class="card-title">Thao tác nhanh</h3>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a href="~/Product/ListAttributes/1" class="btn btn-success">
+                        <i class="bi bi-list-ul"></i> Quản lý thuộc tính
+                    </a>
+                    <a href="~/Product/ListPhoto/1" class="btn btn-primary">
+                        <i class="bi bi-images"></i> Quản lý hình ảnh
+                    </a>
+                    <a href="~/Product/Delete/1" class="btn btn-danger">
+                        <i class="bi bi-trash"></i> Xóa sản phẩm
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

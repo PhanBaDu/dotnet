@@ -1,0 +1,64 @@
+@{
+    ViewData["Title"] = "Thêm người giao hàng";
+}
+
+<div class="card card-primary card-outline mb-4">
+    <div class="card-header">
+        <h3 class="card-title">Thêm người giao hàng mới</h3>
+    </div>
+    <form onsubmit="event.preventDefault()">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="shipperName" class="form-label">Tên người giao hàng: <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="shipperName" name="shipperName" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Điện thoại: <span class="text-danger">*</span></label>
+                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="vehicle" class="form-label">Phương tiện: <span class="text-danger">*</span></label>
+                        <select class="form-select" id="vehicle" name="vehicle" required>
+                            <option value="">-- Chọn phương tiện --</option>
+                            <option value="bike">Xe đạp</option>
+                            <option value="motorbike">Xe máy</option>
+                            <option value="truck">Xe tải</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="isActive" name="isActive" checked>
+                    <label class="form-check-label" for="isActive">
+                        Đang hoạt động
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-save"></i> Lưu thông tin
+            </button>
+            <a href="~/Shipper" class="btn btn-secondary">
+                <i class="bi bi-x-circle"></i> Hủy bỏ
+            </a>
+        </div>
+    </form>
+</div>

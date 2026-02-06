@@ -1,0 +1,65 @@
+@{
+    ViewData["Title"] = "Đổi quyền nhân viên";
+}
+
+<div class="card card-success card-outline mb-4">
+    <div class="card-header">
+        <h3 class="card-title">Đổi quyền cho nhân viên: <strong>Nhân viên 1</strong></h3>
+    </div>
+    <form onsubmit="event.preventDefault()">
+        <div class="card-body">
+            <div class="alert alert-info">
+                <i class="bi bi-info-circle-fill"></i>
+                Thay đổi quyền hạn sẽ ảnh hưởng đến các chức năng mà nhân viên có thể truy cập.
+            </div>
+
+            <h5>Thông tin hiện tại:</h5>
+            <table class="table table-bordered mb-4">
+                <tr>
+                    <th style="width: 200px;">Tên nhân viên:</th>
+                    <td>Nhân viên 1</td>
+                </tr>
+                <tr>
+                    <th>Email:</th>
+                    <td>employee1@company.com</td>
+                </tr>
+                <tr>
+                    <th>Chức vụ hiện tại:</th>
+                    <td><span class="badge bg-info">Staff</span></td>
+                </tr>
+            </table>
+
+            <div class="mb-3">
+                <label for="newRole" class="form-label">Chức vụ mới: <span class="text-danger">*</span></label>
+                <select class="form-select" id="newRole" name="newRole" required>
+                    <option value="">-- Chọn chức vụ mới --</option>
+                    <option value="staff" selected>Staff</option>
+                    <option value="manager">Manager</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="reason" class="form-label">Lý do thay đổi:</label>
+                <textarea class="form-control" id="reason" name="reason" rows="3" placeholder="Nhập lý do thay đổi quyền..."></textarea>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="sendEmail" name="sendEmail" checked>
+                    <label class="form-check-label" for="sendEmail">
+                        Gửi email thông báo cho nhân viên
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-success">
+                <i class="bi bi-shield-check"></i> Cập nhật quyền
+            </button>
+            <a href="~/Employee" class="btn btn-secondary">
+                <i class="bi bi-x-circle"></i> Hủy bỏ
+            </a>
+        </div>
+    </form>
+</div>
