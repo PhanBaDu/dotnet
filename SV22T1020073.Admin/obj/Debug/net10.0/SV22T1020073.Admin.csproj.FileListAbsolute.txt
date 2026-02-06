@@ -60,3 +60,4 @@
 /Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.Admin/obj/Debug/net10.0/SV22T1020073.Admin.pdb
 /Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.Admin/obj/Debug/net10.0/SV22T1020073.Admin.genruntimeconfig.cache
 /Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.Admin/obj/Debug/net10.0/ref/SV22T1020073.Admin.dll
+/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.Admin/obj/Debug/net10.0/SV22T1020073.Admin.sourcelink.json
