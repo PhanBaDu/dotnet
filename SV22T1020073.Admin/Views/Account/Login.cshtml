@@ -2,110 +2,437 @@
     Layout = null;
 }
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - LiteCommerce</title>
+    <title>Đăng nhập - LiteCommerce</title>
     <link rel="stylesheet" href="~/lib/bootstrap/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="~/lib/adminlte/css/adminlte.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --background: #ffffff;
+            --foreground: #0a0a0a;
+            --card: #ffffff;
+            --card-foreground: #0a0a0a;
+            --primary: #171717;
+            --primary-foreground: #fafafa;
+            --secondary: #f5f5f5;
+            --secondary-foreground: #171717;
+            --muted: #f5f5f5;
+            --muted-foreground: #737373;
+            --accent: #f5f5f5;
+            --accent-foreground: #171717;
+            --destructive: #ef4444;
+            --border: #e5e5e5;
+            --input: #e5e5e5;
+            --ring: #0a0a0a;
+            --radius: 0.5rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--background);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 1rem;
         }
 
-        .login-box {
-            width: 400px;
+        .login-container {
+            width: 100%;
+            max-width: 400px;
         }
 
-        .login-card-body {
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            padding: 2rem;
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
         }
 
         .login-logo {
-            text-align: center;
-            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
         }
 
-        .login-logo a {
-            color: #fff;
-            font-size: 2rem;
+        .login-logo-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-foreground);
+            font-size: 1.25rem;
+        }
+
+        .login-logo-text {
+            font-size: 1.5rem;
             font-weight: 700;
-            text-decoration: none;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: var(--foreground);
+            letter-spacing: -0.025em;
         }
 
-        .login-card-body .input-group {
+        .login-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--foreground);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.025em;
+        }
+
+        .login-description {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            line-height: 1.5;
+        }
+
+        .login-card {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        }
+
+        .form-group {
             margin-bottom: 1rem;
         }
 
-        .btn-login {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            color: #fff;
-            font-weight: 600;
-            padding: 0.75rem;
-            transition: transform 0.2s;
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--foreground);
+            margin-bottom: 0.5rem;
         }
 
-        .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        .form-input {
+            width: 100%;
+            height: 2.5rem;
+            padding: 0 0.75rem;
+            font-size: 0.875rem;
+            border: 1px solid var(--input);
+            border-radius: var(--radius);
+            background-color: transparent;
+            color: var(--foreground);
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
+            outline: none;
+        }
+
+        .form-input::placeholder {
+            color: var(--muted-foreground);
+        }
+
+        .form-input:focus {
+            border-color: var(--ring);
+            box-shadow: 0 0 0 2px rgba(10, 10, 10, 0.1);
+        }
+
+        .form-input-icon {
+            position: relative;
+        }
+
+        .form-input-icon .form-input {
+            padding-right: 2.5rem;
+        }
+
+        .form-input-icon .icon {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted-foreground);
+            font-size: 1rem;
+            pointer-events: none;
+        }
+
+        .form-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-checkbox input[type="checkbox"] {
+            width: 1rem;
+            height: 1rem;
+            border: 1px solid var(--input);
+            border-radius: 0.25rem;
+            cursor: pointer;
+            accent-color: var(--primary);
+        }
+
+        .form-checkbox label {
+            font-size: 0.875rem;
+            color: var(--foreground);
+            cursor: pointer;
+        }
+
+        .form-link {
+            font-size: 0.875rem;
+            color: var(--foreground);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            transition: opacity 0.15s ease;
+        }
+
+        .form-link:hover {
+            opacity: 0.8;
+        }
+
+        .btn-primary {
+            width: 100%;
+            height: 2.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: opacity 0.15s ease;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        .btn-primary:active {
+            opacity: 0.8;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: var(--border);
+        }
+
+        .divider-text {
+            font-size: 0.75rem;
+            color: var(--muted-foreground);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-outline {
+            width: 100%;
+            height: 2.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            background-color: transparent;
+            color: var(--foreground);
+            border: 1px solid var(--input);
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: background-color 0.15s ease, border-color 0.15s ease;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .login-footer-text {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+
+        .login-footer-link {
+            color: var(--foreground);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            font-weight: 500;
+        }
+
+        .login-footer-link:hover {
+            opacity: 0.8;
+        }
+
+        .alert {
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .alert-error {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
+        }
+
+        /* Password toggle button */
+        .password-toggle {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--muted-foreground);
+            cursor: pointer;
+            padding: 0;
+            font-size: 1rem;
+        }
+
+        .password-toggle:hover {
+            color: var(--foreground);
         }
     </style>
 </head>
-<body class="login-page">
-    <div class="login-box">
-        <div class="login-logo">
-            <a href="#"><b>Lite</b>Commerce</a>
-        </div>
-        <div class="card">
-            <div class="card-body login-card-body">
-                <p class="login-box-msg">Đăng nhập để bắt đầu phiên làm việc</p>
-
-                <form onsubmit="event.preventDefault()">
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email" required>
-                        <div class="input-group-text">
-                            <span class="bi bi-envelope"></span>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Mật khẩu" required>
-                        <div class="input-group-text">
-                            <span class="bi bi-lock-fill"></span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="remember">
-                                <label class="form-check-label" for="remember">
-                                    Ghi nhớ đăng nhập
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-login btn-block w-100">Đăng nhập</button>
-                        </div>
-                    </div>
-                </form>
-
-                <p class="mb-1 mt-3">
-                    <a href="#">Quên mật khẩu?</a>
-                </p>
+<body>
+    <div class="login-container">
+        <!-- Header -->
+        <div class="login-header">
+            <div class="login-logo">
+                <div class="login-logo-icon">
+                    <i class="bi bi-box-seam"></i>
+                </div>
+                <span class="login-logo-text">LiteCommerce</span>
             </div>
+            <h1 class="login-title">Đăng nhập</h1>
+            <p class="login-description">Nhập thông tin tài khoản để tiếp tục</p>
+        </div>
+
+        <!-- Login Card -->
+        <div class="login-card">
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="alert alert-error">
+                    <i class="bi bi-exclamation-circle me-2"></i>
+                    Email hoặc mật khẩu không đúng
+                </div>
+            }
+
+            <form method="post" asp-action="Login" asp-controller="Account">
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <div class="form-input-icon">
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form-input" 
+                            placeholder="name@example.com"
+                            required 
+                            autocomplete="email"
+                        />
+                        <i class="bi bi-envelope icon"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="password">Mật khẩu</label>
+                    <div class="form-input-icon">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            class="form-input" 
+                            placeholder="••••••••"
+                            required 
+                            autocomplete="current-password"
+                        />
+                        <button type="button" class="password-toggle" onclick="togglePassword()">
+                            <i class="bi bi-eye" id="toggleIcon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="remember" name="remember" />
+                        <label for="remember">Ghi nhớ đăng nhập</label>
+                    </div>
+                    <a href="#" class="form-link">Quên mật khẩu?</a>
+                </div>
+
+                <button type="submit" class="btn-primary">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    Đăng nhập
+                </button>
+            </form>
+
+            <div class="divider">
+                <span class="divider-text">hoặc</span>
+            </div>
+
+            <button type="button" class="btn-outline">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+                Đăng nhập với Google
+            </button>
+        </div>
+
+        <!-- Footer -->
+        <div class="login-footer">
+            <p class="login-footer-text">
+                Chưa có tài khoản? 
+                <a href="#" class="login-footer-link">Đăng ký ngay</a>
+            </p>
         </div>
     </div>
 
     <script src="~/lib/bootstrap/bootstrap.bundle.min.js"></script>
-    <script type="module" src="~/lib/adminlte/js/adminlte.js"></script>
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('toggleIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('bi-eye');
+                toggleIcon.classList.add('bi-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('bi-eye-slash');
+                toggleIcon.classList.add('bi-eye');
+            }
+        }
+    </script>
 </body>
 </html>
