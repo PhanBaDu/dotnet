@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.Admin/SV22T1020073.Admin.csproj",
+      "projectUniqueName": "/Users/phanbadu/workspaces/dotnet/SV22T1020073.Admin/SV22T1020073.Admin.csproj",
       "projectName": "SV22T1020073.Admin",
-      "projectPath": "/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.Admin/SV22T1020073.Admin.csproj",
+      "projectPath": "/Users/phanbadu/workspaces/dotnet/SV22T1020073.Admin/SV22T1020073.Admin.csproj",
       "packagesPath": "/Users/phanbadu/.nuget/packages/",
-      "outputPath": "/Users/phanbadu/workspaces/SV22T1020073/SV22T1020073.Admin/obj/",
+      "outputPath": "/Users/phanbadu/workspaces/dotnet/SV22T1020073.Admin/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/phanbadu/.nuget/NuGet/NuGet.Config"

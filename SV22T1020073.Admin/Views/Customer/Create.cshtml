@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="contactName" class="form-label">Tên giao dịch: <span class="text-danger">*</span></label>
+                        <label for="contactName" class="form-label">Tên liên hệ: <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="contactName" name="contactName" required>
                     </div>
                 </div>
@@ -38,16 +38,38 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="province" class="form-label">Tỉnh/Thành phố:</label>
+                        <select class="form-select" id="province" name="province">
+                            <option value="">-- Chọn tỉnh/thành --</option>
+                            <option value="Hà Nội">Hà Nội</option>
+                            <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                            <option value="Đà Nẵng">Đà Nẵng</option>
+                            <option value="Hải Phòng">Hải Phòng</option>
+                            <option value="Cần Thơ">Cần Thơ</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Mật khẩu: <span class="text-danger">*</span></label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                </div>
+            </div>
+
             <div class="mb-3">
-                <label for="address" class="form-label">Địa chỉ: <span class="text-danger">*</span></label>
-                <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+                <label for="address" class="form-label">Địa chỉ:</label>
+                <textarea class="form-control" id="address" name="address" rows="2"></textarea>
             </div>
 
             <div class="mb-3">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="isActive" name="isActive" checked>
-                    <label class="form-check-label" for="isActive">
-                        Đang hoạt động
+                    <input class="form-check-input" type="checkbox" id="isLocked" name="isLocked">
+                    <label class="form-check-label" for="isLocked">
+                        Khóa tài khoản
                     </label>
                 </div>
             </div>

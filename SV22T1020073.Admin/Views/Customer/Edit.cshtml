@@ -12,13 +12,13 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="customerName" class="form-label">Tên khách hàng: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="customerName" name="customerName" value="Công ty ABC 1" required>
+                        <input type="text" class="form-control" id="customerName" name="customerName" value="Hồ Thị Tâm" required>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="contactName" class="form-label">Tên giao dịch: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="contactName" name="contactName" value="Phan Bá Đủ 1" required>
+                        <label for="contactName" class="form-label">Tên liên hệ: <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="contactName" name="contactName" value="cô Tâm" required>
                     </div>
                 </div>
             </div>
@@ -27,27 +27,42 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="phone" class="form-label">Điện thoại: <span class="text-danger">*</span></label>
-                        <input type="tel" class="form-control" id="phone" name="phone" value="0909123451" required>
+                        <input type="tel" class="form-control" id="phone" name="phone" value="09503277635" required>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email: <span class="text-danger">*</span></label>
-                        <input type="email" class="form-control" id="email" name="email" value="contact@abc1.com" required>
+                        <input type="email" class="form-control" id="email" name="email" value="tam03021990@myshop.com" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="province" class="form-label">Tỉnh/Thành phố:</label>
+                        <select class="form-select" id="province" name="province">
+                            <option value="">-- Chọn tỉnh/thành --</option>
+                            <option value="Hà Nội">Hà Nội</option>
+                            <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                            <option value="Thừa Thiên Huế" selected>Thừa Thiên Huế</option>
+                            <option value="Đà Nẵng">Đà Nẵng</option>
+                        </select>
                     </div>
                 </div>
             </div>
 
             <div class="mb-3">
-                <label for="address" class="form-label">Địa chỉ: <span class="text-danger">*</span></label>
-                <textarea class="form-control" id="address" name="address" rows="3" required>Số 1, Đường ABC, TP.HCM</textarea>
+                <label for="address" class="form-label">Địa chỉ:</label>
+                <textarea class="form-control" id="address" name="address" rows="2"></textarea>
             </div>
 
             <div class="mb-3">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="isActive" name="isActive" checked>
-                    <label class="form-check-label" for="isActive">
-                        Đang hoạt động
+                    <input class="form-check-input" type="checkbox" id="isLocked" name="isLocked">
+                    <label class="form-check-label" for="isLocked">
+                        Khóa tài khoản
                     </label>
                 </div>
             </div>

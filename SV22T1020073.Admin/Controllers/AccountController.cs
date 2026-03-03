@@ -26,10 +26,23 @@ namespace SV22T1020073.Admin.Controllers
 
         public IActionResult Logout()
         {
-            // Chuyển hướng về trang Login
             return RedirectToAction("Login");
         }
 
+        [HttpGet]
+        public IActionResult Profile()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Profile(string fullName, string email, string phone, string address)
+        {
+            // Xử lý cập nhật profile
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
         public IActionResult ChangePassword()
         {
             return View();
